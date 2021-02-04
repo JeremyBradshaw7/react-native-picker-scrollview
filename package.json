@@ -8,17 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yasemincidem/react-native-picker-scrollview"
+    "url": "https://github.com/JeremyBradshaw7/react-native-wheel-scroll-picker"
   },
   "keywords": [
     "picker",
     "react-native",
     "react-native-picker"
   ],
-  "author": "yasemin",
+  "author": "yasemin/jbradshaw",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yasemincidem/react-native-picker-scrollview/issues"
+    "url": "https://github.com/JeremyBradshaw7/react-native-wheel-scroll-picker/issues"
   },
-  "homepage": "https://github.com/yasemincidem/react-native-picker-scrollview#readme"
+  "homepage": "https://github.com/JeremyBradshaw7/react-native-wheel-scroll-picker#readme"
 }

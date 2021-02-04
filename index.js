@@ -32,12 +32,6 @@ export const SelectedItem = styled.View`
   align-items: center;
   height: ${props => props.itemHeight};
 `;
-export const ItemText = styled.Text`
-  color: ${props => props.color || '#000'};
-  font-size: 20px;
-  line-height: 26px;
-  text-align: center;
-`;
 export default class ScrollPicker extends React.Component {
   constructor(props) {
     super(props);
@@ -45,7 +39,9 @@ export default class ScrollPicker extends React.Component {
     this.onMomentumScrollEnd = this.onMomentumScrollEnd.bind(this);
     this.onScrollBeginDrag = this.onScrollBeginDrag.bind(this);
     this.onScrollEndDrag = this.onScrollEndDrag.bind(this);
+
     this.renderItem = (this.props.renderItem || this.renderItemDefault).bind(this);
+
     this.state = {
       selectedIndex: 1,
     }
@@ -104,7 +100,7 @@ export default class ScrollPicker extends React.Component {
 
   renderItemDefault(data, index) {
     const isSelected = index === this.state.selectedIndex;
-    const item = <ItemText color={isSelected === true ? this.props.activeItemColor : this.props.itemColor}>{data}</ItemText>;
+    const item = <Text style={isSelected ? this.props.activeItemTextStyle : this.props.itemTextStyle}>{data}</Text>;;
 
     return (
       <SelectedItem key={index} itemHeight={this.props.itemHeight}>
@@ -235,6 +231,6 @@ ScrollPicker.defaultProps = {
   },
   onScrollEndDrag: () => {
   },
-  itemTextStyle: {fontSize: 20, lineHeight: 26, textAlign: 'center', color: '#B4B4B4'},
-  activeItemTextStyle: {fontSize: 20, lineHeight: 26, textAlign: 'center', color: '#222121'}
+  itemTextStyle: {fontSize: 20, lineHeight: 22, textAlign: 'center', color: '#bbbbbb'},
+  activeItemTextStyle: {fontSize: 26, lineHeight: 26, textAlign: 'center', color: '#000000'}
 };

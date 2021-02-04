@@ -33,7 +33,7 @@ export const SelectedItem = styled.View`
   height: ${props => props.itemHeight};
 `;
 export const ItemText = styled.Text`
-  color: ${props => props.color};
+  color: ${props => props.color || '#000'};
   font-size: 20px;
   line-height: 26px;
   text-align: center;

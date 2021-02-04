@@ -4,7 +4,6 @@ import {
   View,
   Text,
   ScrollView,
-  Dimensions,
   Platform,
 } from 'react-native';
 import PropTypes from 'prop-types';
@@ -33,22 +32,30 @@ export const SelectedItem = styled.View`
   align-items: center;
   height: ${props => props.itemHeight};
 `;
-const deviceWidth = Dimensions.get('window').width;
+export const ItemText = styled.Text`
+  color: ${props => props.color};
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+`;
 export default class ScrollPicker extends React.Component {
   constructor() {
-    super();
+    super(props);
     this.onMomentumScrollBegin = this.onMomentumScrollBegin.bind(this);
     this.onMomentumScrollEnd = this.onMomentumScrollEnd.bind(this);
     this.onScrollBeginDrag = this.onScrollBeginDrag.bind(this);
     this.onScrollEndDrag = this.onScrollEndDrag.bind(this);
+    this.renderItem = (this.props.renderItem || this.renderItemDefault).bind(this);
     this.state = {
       selectedIndex: 1,
     }
   }
 
   componentDidMount() {
-    if (typeof this.props.selectedIndex !== 'undefined') {
-      this.scrollToIndex(this.props.selectedIndex);
+    if (this.props.selectedIndex !== undefined) {
+      setTimeout(() => {
+        this.scrollToIndex(this.props.selectedIndex);
+      }, 0);
     }
   }
 
@@ -81,7 +88,7 @@ export default class ScrollPicker extends React.Component {
           onScrollEndDrag={this.onScrollEndDrag}
         >
           {header}
-          {this.props.dataSource.map(this.renderItem.bind(this))}
+          {this.props.dataSource.map(this.renderItem)}
           {footer}
         </ScrollView>
       </Container>
@@ -95,9 +102,9 @@ export default class ScrollPicker extends React.Component {
     return {header, footer};
   }
 
-  renderItem(data, index) {
+  renderItemDefault(data, index) {
     const isSelected = index === this.state.selectedIndex;
-    const item = <Text style={isSelected ? this.props.activeItemTextStyle : this.props.itemTextStyle}>{data}</Text>;
+    const item = <ItemText color={isSelected === true ? this.props.activeItemColor : this.props.itemColor}>{data}</ItemText>;
 
     return (
       <SelectedItem key={index} itemHeight={this.props.itemHeight}>
@@ -221,7 +228,7 @@ ScrollPicker.defaultProps = {
   wrapperBackground: '#FFFFFF',
   wrapperHeight: 180,
   wrapperWidth: 150,
-  highlightWidth: deviceWidth,
+  highlightWidth: '100%',
   highlightBorderWidth: 2,
   highlightColor: '#333',
   onMomentumScrollEnd: () => {

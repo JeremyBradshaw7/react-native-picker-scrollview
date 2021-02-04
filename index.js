@@ -39,7 +39,7 @@ export const ItemText = styled.Text`
   text-align: center;
 `;
 export default class ScrollPicker extends React.Component {
-  constructor() {
+  constructor(props) {
     super(props);
     this.onMomentumScrollBegin = this.onMomentumScrollBegin.bind(this);
     this.onMomentumScrollEnd = this.onMomentumScrollEnd.bind(this);

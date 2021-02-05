@@ -9,17 +9,17 @@ import {
 import PropTypes from 'prop-types';
 
 const Container = styled.View`
-  height: ${props => props.wrapperHeight};
+  height: ${props => props.wrapperHeight}px;
   flex: 1;
   overflow: hidden;
   align-self: center;
-  width: ${props => props.wrapperWidth};
+  width: ${props => props.wrapperWidth}px;
   background-color: ${props => props.wrapperBackground};
 `;
 export const HighLightView = styled.View`
   position: absolute;
   top: ${props => (props.wrapperHeight - props.itemHeight) / 2};
-  height: ${props => props.itemHeight};
+  height: ${props => props.itemHeight}px;
   width: ${props => props.highlightWidth};
   border-top-color: ${props => props.highlightColor};
   border-bottom-color: ${props => props.highlightColor};
@@ -27,10 +27,9 @@ export const HighLightView = styled.View`
   border-bottom-width: ${props => props.highlightBorderWidth}px;
 `;
 export const SelectedItem = styled.View`
-  height: 30px;
   justify-content: center;
   align-items: center;
-  height: ${props => props.itemHeight};
+  height: ${props => props.itemHeight}px;
 `;
 export default class ScrollPicker extends React.Component {
   constructor(props) {
@@ -231,6 +230,6 @@ ScrollPicker.defaultProps = {
   },
   onScrollEndDrag: () => {
   },
-  itemTextStyle: {fontSize: 20, lineHeight: 22, textAlign: 'center', color: '#bbbbbb'},
-  activeItemTextStyle: {fontSize: 26, lineHeight: 26, textAlign: 'center', color: '#000000'}
+  itemTextStyle: {fontSize: 20, lineHeight: 26, textAlign: 'center', color: '#bbbbbb'},
+  activeItemTextStyle: {fontSize: 20, lineHeight: 26, textAlign: 'center', color: '#000000'}
 };

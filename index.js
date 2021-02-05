@@ -230,6 +230,6 @@ ScrollPicker.defaultProps = {
   },
   onScrollEndDrag: () => {
   },
-  itemTextStyle: {fontSize: 20, lineHeight: 26, textAlign: 'center', color: '#bbbbbb'},
-  activeItemTextStyle: {fontSize: 20, lineHeight: 26, textAlign: 'center', color: '#000000'}
+  itemTextStyle: {fontSize: 20, lineHeight: 26, textAlign: 'center', color: '#ddd'},
+  activeItemTextStyle: {fontSize: 20, lineHeight: 26, textAlign: 'center', color: '#000'}
 };
